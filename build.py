@@ -220,9 +220,9 @@ skills += """
 """
 
 projects_data = [
-    ("Business Web", "fa-shopping-cart", "PT. Singaman Power Export", "A single landing page website for a local business of P3Mi that is officially listed in the database of BP2MI.", ["HTML", "CSS", "Tailwind"]),
-    ("Music Player", "fa-chart-line", "Music Player", "A simple music/audio player with a few features that only plays curtain songs that is available inside the project file.", ["JavaScript", "HTML", "CSS"]),
-    ("Pokemon Index", "fa-tasks", "Pokemon Index", "An index of old generation pokemons that can be searched by name of the pokemon in the old generations of pokemons.", ["React", "Vite"]),
+    ("Business Web", '<i class="fas fa-globe text-4xl text-warm-cream animate-float"></i>', "PT. Singaman Power Export", "A single landing page website for a local business of P3Mi that is officially listed in the database of BP2MI.", ["HTML", "CSS", "Tailwind"]),
+    ("Music Player", '<i class="fas fa-headphones text-4xl text-warm-cream animate-float"></i>', "Music Player", "A simple music/audio player with a few features that only plays curtain songs that is available inside the project file.", ["JavaScript", "HTML", "CSS"]),
+    ("Pokemon Index", '<svg class="w-12 h-12 text-warm-cream animate-float" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" aria-label="Poké Ball icon" role="img"><circle cx="32" cy="32" r="26"/><path d="M6 32h52"/><circle cx="32" cy="32" r="9"/></svg>', "Pokemon Index", "An index of old generation pokemons that can be searched by name of the pokemon in the old generations of pokemons.", ["React", "Vite"]),
 ]
 
 projects = """
@@ -237,7 +237,7 @@ projects = """
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 """
 
-for badge, icon, title, desc, tags in projects_data:
+for badge, icon_html, title, desc, tags in projects_data:
     tags_html = "".join(f'<span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">{t}</span>' for t in tags)
     projects += f"""
                 <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl overflow-hidden card-glow">
@@ -246,7 +246,7 @@ for badge, icon, title, desc, tags in projects_data:
                             <span class="bg-dark-burgundy/80 text-coral-rose text-xs font-semibold px-3 py-1 rounded-full">{badge}</span>
                         </div>
                         <div class="flex items-center justify-center h-24">
-                            <i class="fas {icon} text-4xl text-warm-cream animate-float"></i>
+                            {icon_html}
                         </div>
                     </div>
                     <div class="p-6">
