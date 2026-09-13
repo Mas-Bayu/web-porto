@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f index.html)",
+      "Bash(touch index.html)",
+      "Bash(python *)"
+    ]
+  }
+}

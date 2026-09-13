@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byu's | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-burgundy': '#2D0B0B',
+                        'surface-burgundy': '#421212',
+                        'border-burgundy': '#7A2828',
+                        'warm-cream': '#FFF0DD',
+                        'muted-rose': '#E8B8B8',
+                        'coral-rose': '#E57373',
+                        'crimson-red': '#CD4646',
+                        'deep-maroon': '#7A2828',
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #2D0B0B; color: #FFF0DD; }
+        .gradient-text { background: linear-gradient(135deg, #E57373 0%, #CD4646 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .card-glow { transition: all 0.3s ease; }
+        .card-glow:hover { box-shadow: 0 0 30px rgba(229, 115, 115, 0.3); transform: translateY(-5px); }
+        .btn-glow { transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .btn-glow::before { content: ''; position: absolute; top: 0; left: -200%; width: 200%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; }
+        .btn-glow:hover::before { left: 100%; }
+        .skill-badge { transition: all 0.2s ease; }
+        .skill-badge:hover { transform: scale(1.05); }
+        .project-card-header { background: linear-gradient(135deg, #E57373 0%, #CD4646 100%); }
+        .project-card-header:hover { background: linear-gradient(135deg, #CD4646 0%, #E57373 100%); }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -8px; left: 0; background-color: #E57373; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="bg dark-burgundy min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-dark-burgundy/90 backdrop-blur-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-coral-rose flex items-center justify-center">
+                        <span class="text-warm-cream font-display font-bold text-lg">B</span>
+                    </div>
+                    <span class="ml-2 text-warm-cream font-display font-semibold text-xl hidden sm:block">Byu</span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="nav-link text-muted-rose hover:text-warm-cream transition-colors duration-200">About</a>
+                    <a href="#skills" class="nav-link text-muted-rose hover:text-warm-cream transition-colors duration-200">Skills</a>
+                    <a href="#projects" class="nav-link text-muted-rose hover:text-warm-cream transition-colors duration-200">Projects</a>
+                    <a href="#contact" class="nav-link text-muted-rose hover:text-warm-cream transition-colors duration-200">Contact</a>
+                </div>
+
+                <a href="#contact" class="hidden md:inline-flex btn-glow px-6 py-2.5 bg-coral-rose text-warm-cream font-semibold rounded-full hover:bg-crimson-red transition-colors duration-200">Contact Me</a>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full text-warm-cream hover:bg-surface-burgundy transition-colors" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h20M4 12h20M4 18h20" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden fixed inset-0 w-full h-full bg-dark-burgundy z-40 flex-col items-center justify-center gap-6 px-8 transition-all duration-300 hidden">
+            <a href="#about" class="text-muted-rose hover:text-warm-cream text-lg font-semibold transition-colors mobile-nav-link">About</a>
+            <a href="#skills" class="text-muted-rose hover:text-warm-cream text-lg font-semibold transition-colors mobile-nav-link">Skills</a>
+            <a href="#projects" class="text-muted-rose hover:text-warm-cream text-lg font-semibold transition-colors mobile-nav-link">Projects</a>
+            <a href="#contact" class="text-muted-rose hover:text-warm-cream text-lg font-semibold transition-colors mobile-nav-link">Contact</a>
+            <a href="#contact" class="btn-glow px-8 py-3 bg-coral-rose text-warm-cream font-semibold rounded-full hover:bg-crimson-red transition-colors mobile-nav-link">Contact Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center px-6 sm:px-2 pt-20 md:pt-0">
+        <div class="max-w-4xl text-center">
+            <div class="flex justify-center gap-4 mb-8">
+                <a href="https://github.com/Mas-Bayu" target="_blank" class="w-10 h-10 rounded-full bg-surface-burgundy flex items-center justify-center text-coral-rose hover:bg-coral-rose hover:text-warm-cream transition-all duration-200"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/abiyyu-boggy/" target="_blank" class="w-10 h-10 rounded-full bg-surface-burgundy flex items-center justify-center text-coral-rose hover:bg-coral-rose hover:text-warm-cream transition-all duration-200"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-warm-cream mb-6 leading-tight">
+                Hi. I'm a <span class="gradient-text">Uni Student at University of The People</span>.<br>
+                I've Been Building <br class="sm:hidden">
+                <span class="gradient-text">Projects to gain Experience</span> That Matter.
+            </h1>
+            <p class="text-muted-rose text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
+                I'm passionate at creating projects that would give me experiences in the world of IT/Web Development.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                <a href="#projects" class="btn-glow px-8 py-4 bg-coral-rose text-warm-cream font-semibold rounded-full hover:bg-crimson-red transition-colors duration-200">
+                    <i class="far fa-eye mr-2"></i> View Work
+                </a>
+                <a href="#contact" class="btn-glow px-8 py-4 bg-surface-burgundy text-warm-cream font-semibold rounded-full border-2 border-coral-rose hover:bg-coral-rose transition-colors duration-200">
+                    <i class="far fa-envelope mr-2"></i> Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 sm:px-2">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-cream mb-4">About Me</h2>
+                <div class="w-24 h-1 bg-coral-rose mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl p-8 card-glow">
+                    <h3 class="font-display text-2xl font-semibold text-warm-cream mb-4">Who I Am</h3>
+                    <p class="text-muted-rose leading-relaxed mb-4">I'm a junior programmer that just started to step inside the IT industries to begin my journey as a full-fledge developer. Over the last few months, I've been learning online on how to code using react and python by myself, transitioning from understanding the concepts, learning how to type syntax to actually building projects with the programming language I've learned.</p>
+                    <p class="text-muted-rose leading-relaxed">At University of The People, I'm currently taking computer science as my major. I haven't really started any courses at my Uni just yet, but I'm taking an early step by learning programming languages outside of my college schedules to get a headstart from everyone in my class.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl p-6 text-center card-glow">
+                        <div class="text-4xl font-bold gradient-text mb-2">3+</div>
+                        <div class="text-muted-rose text-sm">Months Experience</div>
+                    </div>
+                    <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl p-6 text-center card-glow">
+                        <div class="text-4xl font-bold gradient-text mb-2">3+</div>
+                        <div class="text-muted-rose text-sm">Projects Completed</div>
+                    </div>
+                    <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl p-6 text-center card-glow">
+                        <div class="text-4xl font-bold gradient-text mb-2">1</div>
+                        <div class="text-muted-rose text-sm">Happy Client</div>
+                    </div>
+                    <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl p-6 text-center card-glow">
+                        <div class="text-4xl font-bold gradient-text mb-2">100%</div>
+                        <div class="text-muted-rose text-sm">Commitment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 sm:px-2 bg-dark-burgundy">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-cream mb-4">My Skills</h2>
+                <div class="w-24 h-1 bg-coral-rose mx-auto rounded-full"></div>
+                <p class="text-muted-rose mt-4 max-w-2xl mx-auto">Technologies and tools I work with to bring ideas to life</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+
+                <div class="skill-badge bg-surface-burgundy border border-border-burgundy rounded-xl p-4 flex flex-col items-center gap-3 card-glow">
+                    <div class="w-12 h-12 rounded-lg bg-dark-burgundy flex items-center justify-center">
+                        <i class="fab fa-html5 text-2xl text-coral-rose"></i>
+                    </div>
+                    <span class="text-muted-rose text-sm font-medium">HTML5</span>
+                </div>
+
+                <div class="skill-badge bg-surface-burgundy border border-border-burgundy rounded-xl p-4 flex flex-col items-center gap-3 card-glow">
+                    <div class="w-12 h-12 rounded-lg bg-dark-burgundy flex items-center justify-center">
+                        <i class="fab fa-css3-alt text-2xl text-coral-rose"></i>
+                    </div>
+                    <span class="text-muted-rose text-sm font-medium">CSS3</span>
+                </div>
+
+                <div class="skill-badge bg-surface-burgundy border border-border-burgundy rounded-xl p-4 flex flex-col items-center gap-3 card-glow">
+                    <div class="w-12 h-12 rounded-lg bg-dark-burgundy flex items-center justify-center">
+                        <i class="fab fa-js-square text-2xl text-coral-rose"></i>
+                    </div>
+                    <span class="text-muted-rose text-sm font-medium">JavaScript</span>
+                </div>
+
+                <div class="skill-badge bg-surface-burgundy border border-border-burgundy rounded-xl p-4 flex flex-col items-center gap-3 card-glow">
+                    <div class="w-12 h-12 rounded-lg bg-dark-burgundy flex items-center justify-center">
+                        <i class="fab fa-react text-2xl text-coral-rose"></i>
+                    </div>
+                    <span class="text-muted-rose text-sm font-medium">React</span>
+                </div>
+
+                <div class="skill-badge bg-surface-burgundy border border-border-burgundy rounded-xl p-4 flex flex-col items-center gap-3 card-glow">
+                    <div class="w-12 h-12 rounded-lg bg-dark-burgundy flex items-center justify-center">
+                        <svg class="w-6 h-6 text-coral-rose" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/></svg>
+                    </div>
+                    <span class="text-muted-rose text-sm font-medium">Tailwind</span>
+                </div>
+                <div class="skill-badge bg-surface-burgundy border border-border-burgundy rounded-xl p-4 flex flex-col items-center gap-3 card-glow">
+                    <div class="w-12 h-12 rounded-lg bg-dark-burgundy flex items-center justify-center">
+                        <svg class="w-6 h-6 text-coral-rose" viewBox="0 0 448 512" fill="currentColor"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
+                    </div>
+                    <span class="text-muted-rose text-sm font-medium">Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 sm:px-2">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-cream mb-4">My Projects</h2>
+                <div class="w-24 h-1 bg-coral-rose mx-auto rounded-full"></div>
+                <p class="text-muted-rose mt-4 max-w-2xl mx-auto">A selection of projects that showcase my skills and passion for web development</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl overflow-hidden card-glow">
+                    <div class="project-card-header p-6 relative transition-all duration-300">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-dark-burgundy/80 text-coral-rose text-xs font-semibold px-3 py-1 rounded-full">Business Web</span>
+                        </div>
+                        <div class="flex items-center justify-center h-24">
+                            <i class="fas fa-shopping-cart text-4xl text-warm-cream animate-float"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-warm-cream font-semibold text-xl mb-2">PT. Singaman Power Export</h3>
+                        <p class="text-muted-rose text-sm mb-4">A single landing page website for a local business of P3Mi that is officially listed in the database of BP2MI.</p>
+                        <div class="flex flex-wrap gap-2 mb-4"><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">HTML</span><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">CSS</span><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">TailWind</span></div>
+                        <div class="flex gap-3">
+                            <a href="https://www.singamanpowerexport.id/" target="_blank" class="btn-glow flex-1 text-center py-2 bg-coral-rose text-warm-cream text-sm font-medium rounded-lg hover:bg-crimson-red transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mas-Bayu/web-PTSINGAMANPOWER" target="_blank" class="btn-glow flex-1 text-center py-2 bg-dark-burgundy border border-border-burgundy text-muted-rose text-sm font-medium rounded-lg hover:bg-surface-burgundy hover:text-warm-cream transition-colors">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl overflow-hidden card-glow">
+                    <div class="project-card-header p-6 relative transition-all duration-300">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-dark-burgundy/80 text-coral-rose text-xs font-semibold px-3 py-1 rounded-full">Player</span>
+                        </div>
+                        <div class="flex items-center justify-center h-24">
+                            <i class="fas fa-chart-line text-4xl text-warm-cream animate-float"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-warm-cream font-semibold text-xl mb-2">Music Player</h3>
+                        <p class="text-muted-rose text-sm mb-4">A simple music/audio player with a few features that only plays curtain songs that is available inside the project file.</p>
+                        <div class="flex flex-wrap gap-2 mb-4"><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">JavaScript</span><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">HTML</span><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">CSS</span></div>
+                        <div class="flex gap-3">
+                            <a href="https://mas-bayu.github.io/project-music-player/" target="_blank" class="btn-glow flex-1 text-center py-2 bg-coral-rose text-warm-cream text-sm font-medium rounded-lg hover:bg-crimson-red transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mas-Bayu/project-music-player" target="_blank" class="btn-glow flex-1 text-center py-2 bg-dark-burgundy border border-border-burgundy text-muted-rose text-sm font-medium rounded-lg hover:bg-surface-burgundy hover:text-warm-cream transition-colors">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl overflow-hidden card-glow">
+                    <div class="project-card-header p-6 relative transition-all duration-300">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-dark-burgundy/80 text-coral-rose text-xs font-semibold px-3 py-1 rounded-full">Index</span>
+                        </div>
+                        <div class="flex items-center justify-center h-24">
+                            <i class="fas fa-tasks text-4xl text-warm-cream animate-float"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-warm-cream font-semibold text-xl mb-2">Pokemon Index</h3>
+                        <p class="text-muted-rose text-sm mb-4">An index of old generation pokemons that can be searched by name of the pokemon in the old generations of pokemons.</p>
+                        <div class="flex flex-wrap gap-2 mb-4"><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">React</span><span class="bg-dark-burgundy text-muted-rose text-xs px-3 py-1 rounded-full">Vite</span></div>
+                        <div class="flex gap-3">
+                            <a href="https://mas-bayu.github.io/Pokemons/" target="_blank" class="btn-glow flex-1 text-center py-2 bg-coral-rose text-warm-cream text-sm font-medium rounded-lg hover:bg-crimson-red transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Mas-Bayu/Pokemons" target="_blank" class="btn-glow flex-1 text-center py-2 bg-dark-burgundy border border-border-burgundy text-muted-rose text-sm font-medium rounded-lg hover:bg-surface-burgundy hover:text-warm-cream transition-colors">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 sm:px-2 bg-surface-burgundy/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-12">
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-cream mb-4">My Whereabouts</h2>
+                <div class="w-24 h-1 bg-coral-rose mx-auto rounded-full"></div>
+                <p class="text-muted-rose mt-6 text-lg max-w-xl mx-auto">A little information about where I am, and how to get in touch.</p>
+            </div>
+            <div class="bg-surface-burgundy border border-border-burgundy rounded-2xl p-8 sm:p-12 card-glow">
+                <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                    <div class="flex items-center gap-4 p-4 bg-dark-burgundy rounded-xl">
+                        <div class="w-12 h-12 rounded-full bg-coral-rose flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-warm-cream"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-muted-rose text-sm">Email</div>
+                            <div class="text-warm-cream font-medium">boggyabiyyu@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-dark-burgundy rounded-xl">
+                        <div class="w-12 h-12 rounded-full bg-coral-rose flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-warm-cream"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-muted-rose text-sm">Location</div>
+                            <div class="text-warm-cream font-medium">Jakarta Pusat, DKI Jakarta</div>
+                        </div>
+                    </div>
+                </div>
+                    <a href="https://drive.google.com/file/d/1oofBH5uNYKosydwZYR7OB070rraHrvQi/view?usp=drive_link" target="_blank" class="btn-glow px-8 py-4 bg-dark-burgundy border border-border-burgundy text-muted-rose font-semibold rounded-full hover:bg-surface-burgundy hover:text-warm-cream transition-colors duration-200 inline-flex items-center justify-center">
+                        <i class="fas fa-file-download mr-2"></i>My CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-border-burgundy">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-muted-rose text-sm">
+                &copy; 2026 Developer. All rights reserved.
+            </div>
+            <div class="flex gap-4">
+                <a href="https://github.com/Mas-Bayu" target="_blank" class="w-8 h-8 rounded-full bg-surface-burgundy flex items-center justify-center text-muted-rose hover:text-coral-rose hover:bg-dark-burgundy transition-all"><i class="fab fa-github text-sm"></i></a>
+                <a href="https://www.linkedin.com/in/abiyyu-boggy/" target="_blank" class="w-8 h-8 rounded-full bg-surface-burgundy flex items-center justify-center text-muted-rose hover:text-coral-rose hover:bg-dark-burgundy transition-all"><i class="fab fa-linkedin-in text-sm"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card-glow, .skill-badge').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
