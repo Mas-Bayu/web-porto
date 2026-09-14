@@ -100,7 +100,7 @@ navbar = """
 
 hero = """
     <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center px-6 sm:px-2 pt-20 md:pt-0">
+    <section id="hero" class="min-h-screen flex items-center justify-center px-6 sm:px-2 pt-20 md:pt-0 bg-surface-burgundy/50">
         <div class="max-w-4xl text-center">
             <div class="flex justify-center gap-4 mb-8">
                 <a href="#" class="w-10 h-10 rounded-full bg-surface-burgundy flex items-center justify-center text-coral-rose hover:bg-coral-rose hover:text-warm-cream transition-all duration-200"><i class="fab fa-github"></i></a>
@@ -130,7 +130,7 @@ hero = """
 
 about = """
     <!-- About Section -->
-    <section id="about" class="py-20 px-6 sm:px-2">
+    <section id="about" class="py-20 px-6 sm:px-2 bg-surface-burgundy/50">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-cream mb-4">About Me</h2>
@@ -167,7 +167,7 @@ about = """
 
 skills = """
     <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6 sm:px-2 bg-dark-burgundy">
+    <section id="skills" class="py-20 px-6 sm:px-2 bg-surface-burgundy/50">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-cream mb-4">My Skills</h2>
@@ -227,7 +227,7 @@ projects_data = [
 
 projects = """
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 sm:px-2">
+    <section id="projects" class="py-20 px-6 sm:px-2 bg-surface-burgundy/50">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-cream mb-4">My Projects</h2>
